@@ -1,0 +1,14 @@
+<div class="box1">
+    <h2>{{article.title}}</h2>
+    <h5>By: {{article.author}}</h5>
+    <h6>Published at: {{article.publishedAt}}</h6>
+    <br>
+    <a routerLink="/bookmark">Go back to Bookmarks</a>
+    <a routerLink="/display" style="float: right;">Go back to Home</a>
+    <br><br>
+    <img class="img-responsive img-thumbnail" src={{article.urlToImage}} alt="news-image">
+    <br><br>
+    <p>{{article.description}}</p>
+    <a href="{{article.url}}" target="_blank">Read Complete News</a>
+    <a routerLink="/bookmark" style="float:right">Go back to Bookmarks</a>
+</div>

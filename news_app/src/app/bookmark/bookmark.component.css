@@ -1,0 +1,118 @@
+.content{
+    display:flex;
+    flex-direction: column;
+    width :100%;
+    overflow-x: hidden; 
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.content::-webkit-scrollbar {
+  display: none;
+}
+.card {
+    
+    height:100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    overflow: hidden;
+  }
+  
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+  .news{
+      margin-top: 20px;
+      
+  }
+  .newsimage{
+      margin-top: 0px !important;
+      width: 100%;
+      height: 15vw;
+      margin: auto;
+  }
+  p{
+    overflow: hidden;
+    
+  }
+  .button-row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 10px;
+  }
+  .button-row .book{
+    background-color: #32ec19;
+    margin-right: 15px;
+    padding:5px 10px;
+    border-radius: 10px;
+  }
+  .button-row .fav{
+    background-color: #222222;
+    padding:5px 10px;
+    border-radius: 10px;
+  }
+  .button-row .book:hover{
+    background-color: #222222;
+  }
+  .button-row .fav:hover{
+    background-color: #32ec19;
+  }
+  .readMore{
+    cursor: pointer;
+  }
+  @media screen and (max-width: 1052px) {
+    .newsimage{
+      margin-top: 0px !important;
+      width: 100%;
+      height: 20vw;
+      margin: auto;
+    }
+  }
+  @media screen and (max-width: 800px){
+    .newsimage{
+      margin-top: 0px !important;
+      width: 100%;
+      height: 40vw;
+      margin: auto;
+    }
+  }
+  @media screen and (max-width: 405px) {
+    .newsimage{
+      margin-top: 0px !important;
+      width: 100%;
+      height: 45vw;
+      margin: auto;
+    }
+  }
+  @media only screen and (min-device-width: 1366px) and (max-device-height: 1024px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: landscape)  {
+    .newsimage{
+      margin-top: 0px !important;
+      width: 100%;
+      height: 25vw !important;
+      margin: auto;
+    }
+  }
+  
+  /* Portrait*/
+  @media only screen and (min-device-width: 1024px) and (max-device-height: 1366px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: portrait)  {
+    .newsimage{
+      margin-top: 0px !important;
+      width: 100%;
+      height: 20vw !important;
+      margin: auto;
+    }
+  }
+  
+  ::ng-deep .unsucess{
+    background-color:rgb(129, 36, 36);
+    color:white;
+  }
+  ::ng-deep .sucess{
+    background-color:rgb(35, 119, 49);
+    color:white;
+  }

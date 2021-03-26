@@ -1,0 +1,27 @@
+<app-header></app-header>
+<br><br>
+<div class="content">
+    <div class="news" fxLayout="row wrap" fxLayoutGap="16px grid">
+        <div *ngFor="let item of allFavourites| paginate: { itemsPerPage: 10, currentPage: p}" [fxFlex]="25 + '%'"
+            fxFlex.xs="100%" fxFlex.sm="50%">
+            <mat-card class="mat-elevation-z4 card">
+                <img class="newsimage" mat-card-image [src]="item.urlToImage">
+                <mat-card-content>
+                    <p>
+                        {{item.title}}
+                    </p>
+                </mat-card-content>
+                <a (click)="openNews(item)" class="readMore">Read Description</a>
+
+                <div class="button-row">
+                    <button mat-raised-button color="primary" (click)="remFavourite(item)" class="book">Remove from
+                        Favourites</button>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

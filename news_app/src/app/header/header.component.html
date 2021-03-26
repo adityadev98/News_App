@@ -1,0 +1,273 @@
+<nav>
+    <ul>
+        <li class="logo">News-App</li>
+        <li class="btn" (click)="expand()"><span class="fas fa-bars"></span></li>
+        <div class="items">
+            <li><a routerLink="/display" (click)="getHeadlines()" routerLinkActive="active" class="home"
+                    [routerLinkActiveOptions]="{exact:true}">Home</a>
+            </li>
+            <li><a routerLink="/bookmark" routerLinkActive="active" (click)="getBookmark()">Bookmarks</a></li>
+            <li><a routerLink="/favourites" routerLinkActive="active">Favourites</a></li>
+            <li>
+                <a routerLink="/display" routerLinkActive="active" [matMenuTriggerFor]="outerMenu">Filter</a>
+                <mat-menu #outerMenu="matMenu">
+                    <!--<button mat-menu-item class="menu_item">Date</button>-->
+                    <button mat-menu-item class="menu_item" [matMenuTriggerFor]="Date">Date</button>
+                    <button mat-menu-item class="menu_item" [matMenuTriggerFor]="category">Category</button>
+                    <button mat-menu-item class="menu_item" [matMenuTriggerFor]="country">Country</button>
+                    <button mat-menu-item class="menu_item" [matMenuTriggerFor]="source">Source</button>
+                </mat-menu>
+                <mat-menu #Date="matMenu" class="menu_date">
+                    <mat-form-field appearance="fill">
+                    <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                        <input matStartDate formControlName="from" placeholder="Start date">
+                        <input matEndDate formControlName="to" placeholder="End date" (dateChange)="onDateChange()">
+                      </mat-date-range-input>
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-date-range-picker #picker color="primary"></mat-date-range-picker>
+                    </mat-form-field>
+                </mat-menu>
+
+                <mat-menu #source="matMenu">
+                    <button mat-menu-item value="abc-news" (click)="getSource($event)">ABC News</button>
+                    <button mat-menu-item value="abc-news-au" (click)="getSource($event)">ABC News (AU)</button>
+                    <button mat-menu-item value="aftenposten" (click)="getSource($event)">Aftenposten</button>
+                    <button mat-menu-item value="al-jazeera-english" (click)="getSource($event)">Al Jazeera
+                        English</button>
+                    <button mat-menu-item value="ansa" (click)="getSource($event)">ANSA.it</button>
+
+                    <button mat-menu-item value="argaam" (click)="getSource($event)">Argaam</button>
+                    <button mat-menu-item value="ars-technica" (click)="getSource($event)">Ars Technica</button>
+                    <button mat-menu-item value="ary-news" (click)="getSource($event)">Ary News</button>
+                    <button mat-menu-item value="associated-press" (click)="getSource($event)">Associated Press</button>
+                    <button mat-menu-item value="australian-financial-review" (click)="getSource($event)">Australian
+                        Financial Review</button>
+                    <button mat-menu-item value="axios" (click)="getSource($event)">Axios</button>
+                    <button mat-menu-item value="bbc-news" (click)="getSource($event)">BBC News</button>
+                    <button mat-menu-item value="bbc-sport" (click)="getSource($event)">BBC Sport</button>
+                    <button mat-menu-item value="bild" (click)="getSource($event)">Bild</button>
+                    <button mat-menu-item value="blasting-news-br" (click)="getSource($event)">Blasting News
+                        (BR)</button>
+                    <button mat-menu-item value="bleacher-report" (click)="getSource($event)">Bleacher Report</button>
+                    <button mat-menu-item value="bloomberg" (click)="getSource($event)">Bloomberg</button>
+                    <button mat-menu-item value="breitbart-news" (click)="getSource($event)">Breitbart News</button>
+                    <button mat-menu-item value="business-insider" (click)="getSource($event)">Business Insider</button>
+                    <button mat-menu-item value="business-insider-uk" (click)="getSource($event)">Business Insider
+                        (UK)</button>
+                    <button mat-menu-item value="buzzfeed" (click)="getSource($event)">Buzzfeed</button>
+                    <button mat-menu-item value="cbc-news" (click)="getSource($event)">CBC News</button>
+                    <button mat-menu-item value="cnn" (click)="getSource($event)">CNN</button>
+                    <button mat-menu-item value="cnn-es" (click)="getSource($event)">CNN Spanish</button>
+                    <button mat-menu-item value="crypto-coins-news" (click)="getSource($event)">Crypto Coins
+                        News</button>
+                    <button mat-menu-item value="der-tagesspiegel" (click)="getSource($event)">Der Tagesspiegel</button>
+                    <button mat-menu-item value="die-zeit" (click)="getSource($event)">Die Zeit</button>
+                    <button mat-menu-item value="el-mundo" (click)="getSource($event)">El Mundo</button>
+                    <button mat-menu-item value="engadget" (click)="getSource($event)">Engadget</button>
+                    <button mat-menu-item value="entertainment-weekly" (click)="getSource($event)">Entertainment
+                        Weekly</button>
+                    <button mat-menu-item value="espn" (click)="getSource($event)">ESPN</button>
+                    <button mat-menu-item value="espn-cric-info" (click)="getSource($event)">ESPN Cric Info</button>
+                    <button mat-menu-item value="financial-post" (click)="getSource($event)">Financial Post</button>
+                    <button mat-menu-item value="focus" (click)="getSource($event)">Focus</button>
+                    <button mat-menu-item value="football-italia" (click)="getSource($event)">Football Italia</button>
+                    <button mat-menu-item value="fortune" (click)="getSource($event)">Fortune</button>
+                    <button mat-menu-item value="four-four-two" (click)="getSource($event)">FourFourTwo</button>
+                    <button mat-menu-item value="fox-news" (click)="getSource($event)">Fox News</button>
+                    <button mat-menu-item value="fox-sports" (click)="getSource($event)">Fox Sports</button>
+                    <button mat-menu-item value="globo" (click)="getSource($event)">Globo</button>
+                    <button mat-menu-item value="google-news" (click)="getSource($event)">Google News</button>
+                    <button mat-menu-item value="google-news-ar" (click)="getSource($event)">Google News
+                        (Argentina)</button>
+                    <button mat-menu-item value="google-news-au" (click)="getSource($event)">Google News
+                        (Australia)</button>
+                    <button mat-menu-item value="google-news-br" (click)="getSource($event)">Google News
+                        (Brazil)</button>
+                    <button mat-menu-item value="google-news-ca" (click)=" getSource($event)">Google News
+                        (Canada)</button>
+                    <button mat-menu-item value="google-news-fr" (click)="getSource($event)">Google News
+                        (France)</button>
+                    <button mat-menu-item value="google-news-in" (click)="getSource($event)">Google News
+                        (India)</button>
+                    <button mat-menu-item value="google-news-is" (click)="getSource($event)">Google News
+                        (Israel)</button>
+                    <button mat-menu-item value="google-news-it" (click)="getSource($event)">Google News
+                        (Italy)</button>
+                    <button mat-menu-item value="google-news-ru" (click)="getSource($event)">Google News
+                        (Russia)</button>
+                    <button mat-menu-item value="google-news-sa" (click)="getSource($event)">Google News (Saudi
+                        Arabia)</button>
+                    <button mat-menu-item value="google-news-uk" (click)="getSource($event)">Google News (UK)</button>
+                    <button mat-menu-item value="goteborgs-posten" (click)="getSource($event)">Göteborgs-Posten</button>
+                    <button mat-menu-item value="gruenderszene" (click)="getSource($event)">Gruenderszene</button>
+                    <button mat-menu-item value="hacker-news" (click)="getSource($event)">Hacker News</button>
+                    <button mat-menu-item value="handelsblatt" (click)="getSource($event)">Handelsblatt</button>
+                    <button mat-menu-item value="ign" (click)="getSource($event)">IGN</button>
+                    <button mat-menu-item value="il-sole-24-ore" (click)="getSource($event)">Il Sole 24 Ore</button>
+                    <button mat-menu-item value="independent" (click)="getSource($event)">Independent</button>
+                    <button mat-menu-item value="infobae" (click)="getSource($event)">Infobae</button>
+                    <button mat-menu-item value="info-money" (click)="getSource($event)">InfoMoney</button>
+                    <button mat-menu-item value="la-gaceta" (click)="getSource($event)">La Gaceta</button>
+                    <button mat-menu-item value="la-nacion" (click)="getSource($event)">La Nacion</button>
+                    <button mat-menu-item value="la-repubblica" (click)="getSource($event)">La Repubblica</button>
+                    <button mat-menu-item value="le-monde" (click)="getSource($event)">Le Monde</button>
+                    <button mat-menu-item value="lenta" (click)="getSource($event)">Lenta</button>
+                    <button mat-menu-item value="lequipe" (click)="getSource($event)">L'equipe</button>
+                    <button mat-menu-item value="les-echos" (click)="getSource($event)">Les Echos</button>
+                    <button mat-menu-item value="liberation" (click)="getSource($event)">Libération</button>
+                    <button mat-menu-item value="marca" (click)="getSource($event)">Marca</button>
+                    <button mat-menu-item value="mashable" (click)="getSource($event)">Mashable</button>
+                    <button mat-menu-item value="medical-news-today" (click)="getSource($event)">Medical News
+                        Today</button>
+                    <button mat-menu-item value="msnbc" (click)="getSource($event)">MSNBC</button>
+                    <button mat-menu-item value="mtv-news" (click)="getSource($event)">MTV News</button>
+                    <button mat-menu-item value="mtv-news-uk" (click)="getSource($event)">MTV News (UK)</button>
+                    <button mat-menu-item value="national-geographic" (click)="getSource($event)">National
+                        Geographic</button>
+                    <button mat-menu-item value="national-review" (click)="getSource($event)">National Review</button>
+                    <button mat-menu-item value="nbc-news" (click)="getSource($event)">NBC News</button>
+                    <button mat-menu-item value="news24" (click)="getSource($event)">News24</button>
+                    <button mat-menu-item value="new-scientist" (click)="getSource($event)">New Scientist</button>
+                    <button mat-menu-item value="news-com-au" (click)="getSource($event)">News.com.au</button>
+                    <button mat-menu-item value="newsweek" (click)="getSource($event)">Newsweek</button>
+                    <button mat-menu-item value="new-york-magazine" (click)="getSource($event)">New York
+                        Magazine</button>
+                    <button mat-menu-item value="next-big-future" (click)="getSource($event)">Next Big Future</button>
+                    <button mat-menu-item value="nfl-news" (click)="getSource($event)">NFL News</button>
+                    <button mat-menu-item value="nhl-news" (click)="getSource($event)">NHL News</button>
+                    <button mat-menu-item value="nrk" (click)="getSource($event)">NRK</button>
+                    <button mat-menu-item value="politico" (click)="getSource($event)">Politico</button>
+                    <button mat-menu-item value="polygon" (click)="getSource($event)">Polygon</button>
+                    <button mat-menu-item value="rbc" (click)="getSource($event)">RBC</button>
+                    <button mat-menu-item value="recode" (click)="getSource($event)">Recode</button>
+                    <button mat-menu-item value="reddit-r-all" (click)="getSource($event)">Reddit</button>
+                    <button mat-menu-item value="reuters" (click)="getSource($event)">Reuters</button>
+                    <button mat-menu-item value="rt" (click)="getSource($event)">RT</button>
+                    <button mat-menu-item value="rte" (click)="getSource($event)">RTE</button>
+                    <button mat-menu-item value="rtl-nieuws" (click)="getSource($event)">RTL Nieuws</button>
+                    <button mat-menu-item value="sabq" (click)="getSource($event)">SABQ</button>
+                    <button mat-menu-item value="spiegel-online" (click)="getSource($event)">Spiegel Online</button>
+                    <button mat-menu-item value="svenska-dagbladet" (click)="getSource($event)">Svenska
+                        Dagbladet</button>
+                    <button mat-menu-item value="t3n" (click)="getSource($event)">T3n</button>
+                    <button mat-menu-item value="talksport" (click)="getSource($event)">TalkSport</button>
+                    <button mat-menu-item value="techcrunch" (click)="getSource($event)">TechCrunch</button>
+                    <button mat-menu-item value="techcrunch-cn" (click)="getSource($event)">TechCrunch (CN)</button>
+                    <button mat-menu-item value="techradar" (click)="getSource($event)">TechRadar</button>
+                    <button mat-menu-item value="the-american-conservative" (click)="getSource($event)">The American
+                        Conservative</button>
+                    <button mat-menu-item value="the-globe-and-mail" (click)="getSource($event)">The Globe And
+                        Mail</button>
+                    <button mat-menu-item value="the-hill" (click)="getSource($event)">The Hill</button>
+                    <button mat-menu-item value="the-hindu" (click)="getSource($event)">The Hindu</button>
+                    <button mat-menu-item value="the-huffington-post" (click)="getSource($event)">The Huffington
+                        Post</button>
+                    <button mat-menu-item value="the-irish-times" (click)="getSource($event)">The Irish Times</button>
+                    <button mat-menu-item value="the-jerusalem-post" (click)="getSource($event)">The Jerusalem
+                        Post</button>
+                    <button mat-menu-item value="the-lad-bible" (click)="getSource($event)">The Lad Bible</button>
+                    <button mat-menu-item value="the-next-web" (click)="getSource($event)">The Next Web</button>
+                    <button mat-menu-item value="the-sport-bible" (click)="getSource($event)">The Sport Bible</button>
+                    <button mat-menu-item value="the-times-of-india" (click)="getSource($event)">The Times of
+                        India</button>
+                    <button mat-menu-item value="the-verge" (click)="getSource($event)">The Verge</button>
+                    <button mat-menu-item value="the-wall-street-journal" (click)="getSource($event)">The Wall Street
+                        Journal</button>
+                    <button mat-menu-item value="the-washington-post" (click)="getSource($event)">The Washington
+                        Post</button>
+                    <button mat-menu-item value="the-washington-times" (click)="getSource($event)">The Washington
+                        Times</button>
+                    <button mat-menu-item value="time" (click)="getSource($event)">Time</button>
+                    <button mat-menu-item value="usa-today" (click)="getSource($event)">USA Today</button>
+                    <button mat-menu-item value="vice-news" (click)="getSource($event)">Vice News</button>
+                    <button mat-menu-item value="wired" (click)="getSource($event)">Wired</button>
+                    <button mat-menu-item value="wired-de" (click)="getSource($event)">Wired.de</button>
+                    <button mat-menu-item value="wirtschafts-woche" (click)="getSource($event)">Wirtschafts
+                        Woche</button>
+                    <button mat-menu-item value="xinhua-net" (click)="getSource($event)">Xinhua Net</button>
+                    <button mat-menu-item value="ynet" (click)="getSource($event)">Ynet</button>
+
+                </mat-menu>
+
+                <mat-menu #category="matMenu">
+                    <button mat-menu-item value="business" (click)="getCategory($event)">Business</button>
+                    <button mat-menu-item value="entertainment" (click)="getCategory($event)">Entertainment</button>
+                    <button mat-menu-item value="general" (click)="getCategory($event)">General</button>
+                    <button mat-menu-item value="health" (click)="getCategory($event)">Health</button>
+                    <button mat-menu-item value="science" (click)="getCategory($event)">Science</button>
+                    <button mat-menu-item value="sports" (click)="getCategory($event)">Sports</button>
+                    <button mat-menu-item value="technology" (click)="getCategory($event)">Technology</button>
+                </mat-menu>
+
+                <mat-menu #country="matMenu">
+                    <button mat-menu-item value="ar" (click)="getCountry($event)">Argentina (AR)</button>
+                    <button mat-menu-item value="au" (click)="getCountry($event)">Australia (AU)</button>
+                    <button mat-menu-item value="at" (click)="getCountry($event)">Austria (AT)</button>
+                    <button mat-menu-item value="be" (click)="getCountry($event)">Belgium (BE)</button>
+                    <button mat-menu-item value="br" (click)="getCountry($event)">Brazil (BR)</button>
+                    <button mat-menu-item value="bg" (click)="getCountry($event)">Bulgaria (BG)</button>
+                    <button mat-menu-item value="ca" (click)="getCountry($event)">Canada (CA)</button>
+                    <button mat-menu-item value="cn" (click)="getCountry($event)">China (CN)</button>
+                    <button mat-menu-item value="co" (click)="getCountry($event)">Colombia (CO)</button>
+                    <button mat-menu-item value="cu" (click)="getCountry($event)">Cuba (CU)</button>
+                    <button mat-menu-item value="cz" (click)="getCountry($event)">Czechia (CZ)</button>
+                    <button mat-menu-item value="eg" (click)="getCountry($event)">Egypt (EG)</button>
+                    <button mat-menu-item value="fr" (click)="getCountry($event)">France (FR)</button>
+                    <button mat-menu-item value="de" (click)="getCountry($event)">Germany (DE)</button>
+                    <button mat-menu-item value="gr" (click)="getCountry($event)">Greece (GR)</button>
+                    <button mat-menu-item value="hk" (click)="getCountry($event)">Hong Kong (HK)</button>
+                    <button mat-menu-item value="hu" (click)="getCountry($event)">Hungary (HU)</button>
+                    <button mat-menu-item value="in" (click)="getCountry($event)">India (IN)</button>
+                    <button mat-menu-item value="id" (click)="getCountry($event)">Indonesia (ID)</button>
+                    <button mat-menu-item value="ie" (click)="getCountry($event)">Ireland (IE)</button>
+                    <button mat-menu-item value="il" (click)="getCountry($event)">Israel (IL)</button>
+                    <button mat-menu-item value="it" (click)="getCountry($event)">Italy (IT)</button>
+                    <button mat-menu-item value="jp" (click)="getCountry($event)">Japan (JP)</button>
+                    <button mat-menu-item value="kr" (click)="getCountry($event)">Korea (KR)</button>
+                    <button mat-menu-item value="lv" (click)="getCountry($event)">Latvia</button>
+                    <button mat-menu-item value="lt" (click)="getCountry($event)">Lithuania (LT)</button>
+                    <button mat-menu-item value="my" (click)="getCountry($event)">Malaysia (MY)</button>
+                    <button mat-menu-item value="mx" (click)="getCountry($event)">Mexico (MX)</button>
+                    <button mat-menu-item value="ma" (click)="getCountry($event)">Morocco (MA)</button>
+                    <button mat-menu-item value="nl" (click)="getCountry($event)">Netherlands (NL)</button>
+                    <button mat-menu-item value="nz" (click)="getCountry($event)">New Zealand (NZ)</button>
+                    <button mat-menu-item value="ng" (click)="getCountry($event)">Nigeria (NG)</button>
+                    <button mat-menu-item value="no" (click)="getCountry($event)">Norway (NO)</button>
+                    <button mat-menu-item value="ph" (click)="getCountry($event)">Philippines (PH)</button>
+                    <button mat-menu-item value="pl" (click)="getCountry($event)">Poland (PL)</button>
+                    <button mat-menu-item value="pt" (click)="getCountry($event)">Portugal (PT)</button>
+                    <button mat-menu-item value="ro" (click)="getCountry($event)">Romania (RO)</button>
+                    <button mat-menu-item value="ru" (click)="getCountry($event)">Russian Federation (RU)</button>
+                    <button mat-menu-item value="sa" (click)="getCountry($event)">Saudi Arabia (SA)</button>
+                    <button mat-menu-item value="rs" (click)="getCountry($event)">Serbia (RS)</button>
+                    <button mat-menu-item value="sg" (click)="getCountry($event)">Singapore (SG)</button>
+                    <button mat-menu-item value="sk" (click)="getCountry($event)">Slovakia (SK)</button>
+                    <button mat-menu-item value="si" (click)="getCountry($event)">Slovenia (SI)</button>
+                    <button mat-menu-item value="za" (click)="getCountry($event)">South Africa (ZA)</button>
+                    <button mat-menu-item value="se" (click)="getCountry($event)">Sweden (SE)</button>
+                    <button mat-menu-item value="ch" (click)="getCountry($event)">Switzerland (CH)</button>
+                    <button mat-menu-item value="tw" (click)="getCountry($event)">Taiwan (TW)</button>
+                    <button mat-menu-item value="th" (click)="getCountry($event)">Thailand (TH)</button>
+                    <button mat-menu-item value="tr" (click)="getCountry($event)">Turkey (TR)</button>
+                    <button mat-menu-item value="ua" (click)="getCountry($event)">Ukraine (UA)</button>
+                    <button mat-menu-item value="ae" (click)="getCountry($event)">United Arab Emirates (AE)</button>
+                    <button mat-menu-item value="gb" (click)="getCountry($event)">United Kingdom of Great Britain and
+                        Northern Ireland (GB)</button>
+                    <button mat-menu-item value="us" (click)="getCountry($event)">United States of America (US)</button>
+                    <button mat-menu-item value="ve" (click)="getCountry($event)">Venezuela (VE)</button>
+                </mat-menu>
+
+            </li>
+            <li class="logout"><a (click)="logoutUser()" *ngIf="isUserLoggedIn" routerLink="" routerLinkActive="active">Logout</a></li>
+            <li class="logout"><a *ngIf="!isUserLoggedIn" routerLink="/login" routerLinkActive="active">Login</a></li>
+            
+            <!-- <li class="logout"><a (click)="logoutUser()" routerLink="" routerLinkActive="active">Logout</a></li> -->
+        </div>
+        <li class="search-icon" (click)="search($event)">
+            <input type="search" placeholder="Search news" [(ngModel)]="searchkey">
+            <label class="icon">
+                <span class="fas fa-search"></span>
+            </label>
+        </li>
+    </ul>
+</nav>

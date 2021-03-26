@@ -1,0 +1,13 @@
+h2{
+    color: #222222;
+    font-weight: 600;
+    
+}
+.box1{
+    margin-left: 10vw;
+    margin-right: 10vw;
+    height:fit-content;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
